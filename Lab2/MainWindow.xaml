@@ -57,9 +57,7 @@
             </StackPanel>
         </Border>
 
-        <!-- Нижній Border з внутрішнім Grid (2 рядки):
-             - Верхній рядок: TextBox (з прокруткою)
-             - Нижній рядок (Auto): DockPanel із кнопкою "OK" -->
+        <!-- Нижній Border із внутрішнім Grid -->
         <Border Grid.Row="1"
                 Background="{StaticResource LinearPanelBrush}"
                 BorderBrush="#FFCBBEBE"
@@ -68,26 +66,43 @@
                 Margin="5">
             <Grid Margin="10">
                 <Grid.RowDefinitions>
-                    <!-- Верхній рядок заповнює весь доступний простір -->
+                    <!-- Перший рядок: TextBox заповнює весь простір -->
                     <RowDefinition/>
-                    <!-- Нижній рядок - автоматична висота -->
+                    <!-- Другий рядок: DockPanel для повзунка та кнопки "OK" -->
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- TextBox із вертикальною смугою прокручування -->
+                <!-- TextBox із прив'язаним розміром шрифту -->
                 <TextBox Grid.Row="0"
                          Margin="5"
                          AcceptsReturn="True"
                          VerticalScrollBarVisibility="Visible"
-                         HorizontalScrollBarVisibility="Auto"/>
+                         HorizontalScrollBarVisibility="Auto"
+                         FontSize="{Binding ElementName=fontSlider, Path=Value}"/>
 
-                <!-- DockPanel із кнопкою "OK", "докованою" донизу.
-                     Стиль для цієї кнопки вимкнено (Style="{x:Null}") -->
-                <DockPanel Grid.Row="1" LastChildFill="False">
+                <!-- DockPanel, де розташовані Label, Slider і кнопка OK -->
+                <DockPanel Grid.Row="1" LastChildFill="False" Margin="5">
+                    <!-- Підпис для повзунка -->
+                    <Label Content="Розмір шрифту:" 
+                           DockPanel.Dock="Left" 
+                           VerticalAlignment="Center"
+                           Margin="4,0"/>
+
+                    <!-- Повзунок для вибору розміру шрифту -->
+                    <Slider x:Name="fontSlider"
+                            DockPanel.Dock="Left"
+                            Margin="4"
+                            MinWidth="100"
+                            Minimum="12"
+                            Maximum="100"
+                            Value="24" />
+
+                    <!-- Кнопка OK (стиль відключено) -->
                     <Button Content="OK"
                             Style="{x:Null}"
                             DockPanel.Dock="Bottom"
-                            Width="40"/>
+                            Width="40"
+                            Margin="4"/>
                 </DockPanel>
             </Grid>
         </Border>
