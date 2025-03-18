@@ -5,11 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="600">
-    <DockPanel LastChildFill="False">
-        <Label DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="20" >Label </Label>
-        <TextBox DockPanel.Dock="Left" Width="220" >TexBox</TextBox>
-        <TextBox DockPanel.Dock="Right" Width="220" >TexBox</TextBox>
-        <Button DockPanel.Dock="Bottom" Margin="0 0 0 40" Height="30" Width="120" >Button</Button>
-    </DockPanel>
+        Title="MainWindow" Height="300" Width="600">
+
+    <!-- Canvas надає можливість розміщувати елементи у фіксованих координатах -->
+    <Canvas Background="Cyan">
+        <!-- Label зі зміщенням ліворуч на 20 і згори на 20 -->
+        <Label Canvas.Left="20" Canvas.Top="20">Lable</Label>
+
+        <!-- TextBox зі зміщенням ліворуч на 40 і згори на 40 -->
+        <TextBox Canvas.Left="40"  Canvas.Top="40" Width="60">TextBox</TextBox>
+
+        <!-- Button зі зміщенням ліворуч на 60 і згори на 60 -->
+        <Button Canvas.Left="60" Canvas.Top="60"  Width="60">Button</Button>
+    </Canvas>
 </Window>
