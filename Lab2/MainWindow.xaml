@@ -5,24 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab2"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="800">
-    <Grid ShowGridLines="True">
-        <!-- Визначення рядків: перший - у 4 рази менший за другий, третій - автоматична висота -->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <!-- Три стовпці -->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
-        <!-- Розміщення елементів у другому стовпці -->
-        <Label Grid.Row="0" Grid.Column="1">Label</Label>
-        <TextBox Grid.Row="1" Grid.Column="0" >TextBox</TextBox>
-        <Button Grid.Row="2" Grid.Column="1">Button</Button>
-    </Grid>
+    <StackPanel Margin="100">
+        <Label HorizontalAlignment="Center">Label</Label>
+        
+        <TextBox>TextBox</TextBox>
+        <TextBox>TextBox</TextBox>
+        <TextBox>TextBox</TextBox>
+        <TextBox>TextBox</TextBox>
+        
+        
+        <Button Width="200" Margin="80 80">Button</Button>
+    </StackPanel>
 </Window>
