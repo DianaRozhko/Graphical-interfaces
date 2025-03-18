@@ -42,16 +42,26 @@
                 CornerRadius="10"
                 Margin="5">
             <StackPanel Orientation="Horizontal">
-                <Button ToolTip="Відкрити">
+                <!-- Кнопка "Відкрити" -->
+                <Button ToolTip="Відкрити"
+                        Command="{x:Static ApplicationCommands.Open}">
                     <Image Source="images/open.png" Width="60" Height="60"/>
                 </Button>
-                <Button ToolTip="Стерти">
+                <!-- Кнопка "Стерти" (очищення TextBox) -->
+                <Button ToolTip="Стерти"
+                        Command="{x:Static ApplicationCommands.Close}">
                     <Image Source="images/clean.png" Width="60" Height="60"/>
                 </Button>
-                <Button ToolTip="Копіювати">
+                <!-- Кнопка "Копіювати" – вбудована команда Copy -->
+                <Button ToolTip="Копіювати"
+                        Command="Copy"
+                        CommandTarget="{Binding ElementName=MainTextBox}">
                     <Image Source="images/copy.png" Width="60" Height="60"/>
                 </Button>
-                <Button ToolTip="Вставити">
+                <!-- Кнопка "Вставити" – вбудована команда Paste -->
+                <Button ToolTip="Вставити"
+                        Command="Paste"
+                        CommandTarget="{Binding ElementName=MainTextBox}">
                     <Image Source="images/paste.png" Width="60" Height="60"/>
                 </Button>
             </StackPanel>
@@ -73,7 +83,8 @@
                 </Grid.RowDefinitions>
 
                 <!-- TextBox із прив'язаним розміром шрифту -->
-                <TextBox Grid.Row="0"
+                <TextBox x:Name="MainTextBox"
+                         Grid.Row="0"
                          Margin="5"
                          AcceptsReturn="True"
                          VerticalScrollBarVisibility="Visible"
@@ -82,13 +93,10 @@
 
                 <!-- DockPanel, де розташовані Label, Slider і кнопка OK -->
                 <DockPanel Grid.Row="1" LastChildFill="False" Margin="5">
-                    <!-- Підпис для повзунка -->
                     <Label Content="Розмір шрифту:" 
                            DockPanel.Dock="Left" 
                            VerticalAlignment="Center"
                            Margin="4,0"/>
-
-                    <!-- Повзунок для вибору розміру шрифту -->
                     <Slider x:Name="fontSlider"
                             DockPanel.Dock="Left"
                             Margin="4"
@@ -96,10 +104,10 @@
                             Minimum="12"
                             Maximum="100"
                             Value="24" />
-
-                    <!-- Кнопка OK (стиль відключено) -->
+                    <!-- Кнопка "OK" – прив'язана до команди Save; стиль скасовано -->
                     <Button Content="OK"
                             Style="{x:Null}"
+                            Command="{x:Static ApplicationCommands.Save}"
                             DockPanel.Dock="Bottom"
                             Width="40"
                             Margin="4"/>
