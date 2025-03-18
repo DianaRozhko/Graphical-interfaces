@@ -7,6 +7,24 @@
         mc:Ignorable="d"
         Title="TextEditor" Height="450" Width="600">
 
+    <!-- Оголошення ресурсів вікна -->
+    <Window.Resources>
+        <!-- Лінійний градієнт: жовтий – блакитний – жовтий -->
+        <LinearGradientBrush x:Key="LinearPanelBrush" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="Yellow" Offset="0"/>
+            <GradientStop Color="Cyan" Offset="0.5"/>
+            <GradientStop Color="Yellow" Offset="1"/>
+        </LinearGradientBrush>
+
+        <!-- Стиль за замовчуванням для всіх кнопок (крім тих, у яких він скасований) -->
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
+
     <!-- Головний контейнер -->
     <Grid>
         <Grid.RowDefinitions>
@@ -15,24 +33,26 @@
             <!-- Нижній рядок для текстової області -->
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <!--Верхній Border з заокругленими кутами та кнопками -->
+
+        <!-- Верхній Border з заокругленими кутами, градієнтом і кнопками -->
         <Border Grid.Row="0"
+                Background="{StaticResource LinearPanelBrush}"
                 BorderBrush="#FFCBBEBE"
                 BorderThickness="2"
                 CornerRadius="10"
                 Margin="5">
             <StackPanel Orientation="Horizontal">
-                <Button ToolTip="Відкрити" >
-                    <Image Source="images/open.png" Width="40" Height="40"/>
+                <Button ToolTip="Відкрити">
+                    <Image Source="images/open.png" Width="60" Height="60"/>
                 </Button>
-                <Button ToolTip="Стерти" >
-                    <Image Source="images/clean.png" Width="40" Height="40"/>
+                <Button ToolTip="Стерти">
+                    <Image Source="images/clean.png" Width="60" Height="60"/>
                 </Button>
                 <Button ToolTip="Копіювати">
-                    <Image Source="images/copy.png" Width="40" Height="40"/>
+                    <Image Source="images/copy.png" Width="60" Height="60"/>
                 </Button>
-                <Button ToolTip="Вставити" >
-                    <Image Source="images/paste.png" Width="40" Height="40"/>
+                <Button ToolTip="Вставити">
+                    <Image Source="images/paste.png" Width="60" Height="60"/>
                 </Button>
             </StackPanel>
         </Border>
@@ -41,28 +61,33 @@
              - Верхній рядок: TextBox (з прокруткою)
              - Нижній рядок (Auto): DockPanel із кнопкою "OK" -->
         <Border Grid.Row="1"
+                Background="{StaticResource LinearPanelBrush}"
                 BorderBrush="#FFCBBEBE"
                 BorderThickness="2"
                 CornerRadius="10"
                 Margin="5">
             <Grid Margin="10">
                 <Grid.RowDefinitions>
-                    <!-- Перший рядок заповнює доступний простір -->
+                    <!-- Верхній рядок заповнює весь доступний простір -->
                     <RowDefinition/>
-                    <!-- Другий рядок - автоматична висота -->
+                    <!-- Нижній рядок - автоматична висота -->
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- TextBox з вертикальною прокруткою -->
+                <!-- TextBox із вертикальною смугою прокручування -->
                 <TextBox Grid.Row="0"
                          Margin="5"
                          AcceptsReturn="True"
                          VerticalScrollBarVisibility="Visible"
                          HorizontalScrollBarVisibility="Auto"/>
 
-                <!-- DockPanel із кнопкою, "пристикованою" донизу -->
+                <!-- DockPanel із кнопкою "OK", "докованою" донизу.
+                     Стиль для цієї кнопки вимкнено (Style="{x:Null}") -->
                 <DockPanel Grid.Row="1" LastChildFill="False">
-                    <Button Content="OK" DockPanel.Dock="Bottom" Width="30" Margin="5"/>
+                    <Button Content="OK"
+                            Style="{x:Null}"
+                            DockPanel.Dock="Bottom"
+                            Width="40"/>
                 </DockPanel>
             </Grid>
         </Border>
