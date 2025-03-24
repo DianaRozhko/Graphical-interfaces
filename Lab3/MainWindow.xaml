@@ -5,8 +5,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Гра Ворожка" Height="450" Width="400" Background="#FFF3E5F5" MinHeight="300" MinWidth="300">
+        Title="Гра Ворожка" Height="450" Width="450" Background="#FFF3E5F5" MinHeight="300" MinWidth="300">
+
+    <!-- Основний контейнер із відступами -->
     <Grid Margin="20">
+
+        <!-- Розділення інтерфейсу на рядки -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -14,24 +18,29 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Текст-заголовок -->
         <TextBlock Text="Задай своє питання і натисни кнопку!"
-                   FontSize="18" FontWeight="Bold"
+                   FontSize="20" FontWeight="Bold"
                    HorizontalAlignment="Center" Margin="0,10" Foreground="#7B1FA2"/>
 
+        <!-- Поле для введення запитання -->
         <TextBox x:Name="QuestionTextBox" Grid.Row="1" Margin="0,10" FontSize="16"
                  Padding="5" Background="White" BorderBrush="#AB47BC" BorderThickness="2"
                  Foreground="#4A148C" VerticalContentAlignment="Center"
                  HorizontalAlignment="Stretch"/>
 
+        <!-- Панель для відображення відповіді з фоном і скругленням -->
         <Border Grid.Row="2" Background="#E1BEE7" CornerRadius="10" Padding="10" Margin="0,20">
             <TextBlock x:Name="AnswerText" Text="Тут буде відповідь..." 
                        FontSize="24" FontWeight="SemiBold"
                        TextAlignment="Center" TextWrapping="Wrap" Foreground="#4A148C"/>
         </Border>
 
-        <Button Grid.Row="3" Content="Запитати Ворожку" Click="AskFortune_Click"
+        <!-- Кнопка для виклику ворожки -->
+        <Button Grid.Row="3" Content="Спитати Ворожку" Click="AskFortune_Click"
                 Background="#BA68C8" Foreground="White" FontSize="16" FontWeight="Bold"
                 Padding="10" Margin="0,10" HorizontalAlignment="Center"
                 Width="200" Height="60" BorderBrush="#6A1B9A" BorderThickness="2"/>
+
     </Grid>
 </Window>
